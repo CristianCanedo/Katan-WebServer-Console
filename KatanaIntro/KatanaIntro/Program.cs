@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace KatanaIntro
 {
+    // Func delegate returns a task and essentially passes component to component
+    // as request progresses through pipeline
+    using AppFunc = Func<IDictionary<string, object>, Task>;
+
     class Program
     {
         static void Main(string[] args)
@@ -23,16 +27,46 @@ namespace KatanaIntro
             }
         }
     }
+    
     public class Startup
     {
         // IAppBuilder contains method to configure how we want to handle requests and responses
         public void Configuration(IAppBuilder app)
         {
-            app.Run(ctx =>
+            app.UseHelloWorld();
+        }
+    }
+    // Creating low level extension class with extension method of IAppBuilder
+    public static class AppBuilderExtensions
+    {
+        public static void UseHelloWorld(this IAppBuilder app)
+        {
+            app.Use<HelloWorldComponent>();
+        }
+    }
+    
+    public class HelloWorldComponent
+    {
+        // Saves next AppFunc component in private _next
+        AppFunc _next;
+
+        // Needs constructor to take one argument to process next component in OWIN pipeline
+        public HelloWorldComponent(AppFunc next)
+        {
+            _next = next; // needs validation
+        }
+
+        // Method to match AppFunc signature and proccess components in pipeline
+        public Task Invoke(IDictionary<string, object> environment)
+        {
+            // Reference to owin.ResponseBody to allow us to write to the Stream
+            var response = environment["owin.ResponseBody"] as Stream;
+
+            // creating new StreamWriter to allow us to write to the response body
+            using(var writer = new StreamWriter(response))
             {
-                return ctx.Response.WriteAsync("Hello World!"); // WriteAsyc() returns a task
-                                                                // for every http request, print hello world
-            });
+                return writer.WriteAsync("Hello!!");
+            }
         }
     }
 }
