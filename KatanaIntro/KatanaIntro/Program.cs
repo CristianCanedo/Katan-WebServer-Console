@@ -33,6 +33,36 @@ namespace KatanaIntro
         // IAppBuilder contains method to configure how we want to handle requests and responses
         public void Configuration(IAppBuilder app)
         {
+            // Middleware
+            app.Use(async (environment, next) =>
+            {
+                // Incoming request traveling through pipeline being processed.
+                // Writing out each key/value pair in environment to the server console
+                foreach (var pair in environment.Environment)
+                {
+                    Console.WriteLine("{0}:{1}", pair.Key, pair.Value);
+                }
+
+                await next();
+            });
+
+            // Middleware
+            app.Use(async (environment, next) =>
+            {
+                // Incoming request traveling through pipeline being processed.
+                // Writing the environment request path to the server console
+                Console.WriteLine("Requesting : " + environment.Request.Path);
+
+                await next();
+
+                // Response coming back through pipeline.
+                // Writing the environment response status code to the server console
+                Console.WriteLine("Response: " + environment.Response.StatusCode);
+
+
+            });
+            
+            
             app.UseHelloWorld();
         }
     }
