@@ -37,19 +37,6 @@ namespace KatanaIntro
             app.Use(async (environment, next) =>
             {
                 // Incoming request traveling through pipeline being processed.
-                // Writing out each key/value pair in environment to the server console
-                foreach (var pair in environment.Environment)
-                {
-                    Console.WriteLine("{0}:{1}", pair.Key, pair.Value);
-                }
-
-                await next();
-            });
-
-            // Middleware
-            app.Use(async (environment, next) =>
-            {
-                // Incoming request traveling through pipeline being processed.
                 // Writing the environment request path to the server console
                 Console.WriteLine("Requesting : " + environment.Request.Path);
 
@@ -62,8 +49,21 @@ namespace KatanaIntro
 
             });
             
+            ConfigureWebApi(app);
             
             app.UseHelloWorld();
+        }
+        
+        private void ConfigureWebApi(IAppBuilder app)
+        {
+            // Instance of HttpConfiguration controls routing rules, serializers and routes.
+            var config = new HttpConfiguration();
+            config.Routes.MapHttpRoute(
+                "DefaultApi",
+                "api/{controller}/{id}",
+                new { id = RouteParameter.Optional });
+
+            app.UseWebApi(config);
         }
     }
     // Creating low level extension class with extension method of IAppBuilder
