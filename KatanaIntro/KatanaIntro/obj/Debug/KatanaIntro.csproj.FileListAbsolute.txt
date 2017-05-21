@@ -1,0 +1,13 @@
+c:\users\rawr\documents\visual studio 2017\Projects\KatanaIntro\KatanaIntro\bin\Debug\KatanaIntro.exe.config
+c:\users\rawr\documents\visual studio 2017\Projects\KatanaIntro\KatanaIntro\bin\Debug\KatanaIntro.exe
+c:\users\rawr\documents\visual studio 2017\Projects\KatanaIntro\KatanaIntro\bin\Debug\KatanaIntro.pdb
+c:\users\rawr\documents\visual studio 2017\Projects\KatanaIntro\KatanaIntro\bin\Debug\Microsoft.Owin.dll
+c:\users\rawr\documents\visual studio 2017\Projects\KatanaIntro\KatanaIntro\bin\Debug\Microsoft.Owin.Host.HttpListener.dll
+c:\users\rawr\documents\visual studio 2017\Projects\KatanaIntro\KatanaIntro\bin\Debug\Microsoft.Owin.Hosting.dll
+c:\users\rawr\documents\visual studio 2017\Projects\KatanaIntro\KatanaIntro\bin\Debug\Owin.dll
+c:\users\rawr\documents\visual studio 2017\Projects\KatanaIntro\KatanaIntro\bin\Debug\Microsoft.Owin.xml
+c:\users\rawr\documents\visual studio 2017\Projects\KatanaIntro\KatanaIntro\bin\Debug\Microsoft.Owin.Host.HttpListener.xml
+c:\users\rawr\documents\visual studio 2017\Projects\KatanaIntro\KatanaIntro\bin\Debug\Microsoft.Owin.Hosting.xml
+c:\users\rawr\documents\visual studio 2017\Projects\KatanaIntro\KatanaIntro\obj\Debug\KatanaIntro.csprojResolveAssemblyReference.cache
+c:\users\rawr\documents\visual studio 2017\Projects\KatanaIntro\KatanaIntro\obj\Debug\KatanaIntro.exe
+c:\users\rawr\documents\visual studio 2017\Projects\KatanaIntro\KatanaIntro\obj\Debug\KatanaIntro.pdb
